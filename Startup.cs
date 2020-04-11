@@ -18,6 +18,7 @@ namespace DutchTreat
             //middlewares - the order is important!
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseNodeModules();
         }
     }
 }
