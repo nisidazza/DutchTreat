@@ -12,7 +12,7 @@ namespace DutchTreat.Controllers
         //action
         public IActionResult Index()
         {
-            throw new InvalidOperationException();
+            //throw new InvalidOperationException();
             //Razor
             return View();
         }
