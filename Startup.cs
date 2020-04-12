@@ -17,7 +17,7 @@ namespace DutchTreat
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsEnvironment("Development")) // see project's properties  - Debug
+            if (env.IsDevelopment()) // env.IsEnvironment("Development") see project's properties  - Debug
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -29,6 +29,7 @@ namespace DutchTreat
             //middlewares - the order is important!
             //app.UseDefaultFiles(); with MVC we don't need html file anymore
             app.UseStaticFiles();
+
             app.UseNodeModules();
 
             //this turns-on generic routing inside ASP.NET Core 3.1
