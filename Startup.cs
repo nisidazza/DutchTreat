@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace DutchTreat
 {
@@ -16,6 +17,15 @@ namespace DutchTreat
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsEnvironment("Development")) // see project's properties  - Debug
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            { 
+                // Add Error Page
+            }
+           
             //middlewares - the order is important!
             //app.UseDefaultFiles(); with MVC we don't need html file anymore
             app.UseStaticFiles();
