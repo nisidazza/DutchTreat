@@ -17,6 +17,7 @@ namespace DutchTreat.Controllers
             return View();
         }
 
+        [HttpGet("contact")] //specify a route that is specific to Contact
         public IActionResult Contact() // match th cshtml file name in ViewsApp
         {
             ViewBag.Title = "Contact Us";
