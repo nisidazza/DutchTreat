@@ -29,12 +29,10 @@ namespace DutchTreat.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Send the email
+                //Send the email via Service
+                _mailService.SendMail("nisida@azzalini.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
             }
-            else
-            {
-                //show the errors
-            }
+            
             return View();
         }
 
