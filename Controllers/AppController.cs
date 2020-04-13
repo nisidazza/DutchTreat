@@ -1,4 +1,5 @@
-﻿using DutchTreat.ViewModels;
+﻿using DutchTreat.Services;
+using DutchTreat.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,12 @@ namespace DutchTreat.Controllers
 {
     public class AppController : Controller
     {
+        private readonly IMailService _mailService;
+
+        public AppController(IMailService mailService)
+        {
+            _mailService = mailService;
+        }
         //action
         public IActionResult Index() // match the cshtml file name in ViewsApp
         {
@@ -30,7 +37,7 @@ namespace DutchTreat.Controllers
             if (ModelState.IsValid)
             {
                 //Send the email via Service
-                _mailService.SendMail("nisida@azzalini.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
+                _mailService.SendMessage("nisida@azzalini.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
             }
             
             return View();

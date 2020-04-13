@@ -1,3 +1,4 @@
+using DutchTreat.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,10 @@ namespace DutchTreat
             //ENABLE RAZOR PAGES - 1/2
             services.AddRazorPages();
 
-            services.AddControllersWithViews();            
+            services.AddControllersWithViews();
+
+            services.AddTransient<IMailService, NullMailService>();
+            // Support for real mail service
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
