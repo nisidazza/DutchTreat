@@ -31,7 +31,8 @@ namespace DutchTreat.Controllers
             {
                 //Send the email
             }
-            else { 
+            else
+            {
                 //show the errors
             }
             return View();

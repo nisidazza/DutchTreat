@@ -10,7 +10,7 @@ namespace DutchTreat.ViewModels
     public class ContactViewModel
     {
         [Required]
-        [MinLength(5)]
+        [MinLength(5, ErrorMessage = "Your Name is TOO SHORT")]
         public string Name { get; set; }
         [Required]
         [EmailAddress]
@@ -18,7 +18,7 @@ namespace DutchTreat.ViewModels
         [Required]
         public string Subject { get; set; }
         [Required]
-        [MaxLength(250)]
+        [MaxLength(250, ErrorMessage = "Too Long")]
         public string Message { get; set; }
     }
 }
