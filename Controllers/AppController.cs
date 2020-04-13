@@ -10,21 +10,20 @@ namespace DutchTreat.Controllers
     public class AppController : Controller
     {
         //action
-        public IActionResult Index() // match th cshtml file name in ViewsApp
+        public IActionResult Index() // match the cshtml file name in ViewsApp
         {
-            //throw new InvalidOperationException();
             //Razor
             return View();
         }
 
         [HttpGet("contact")] //specify a route that is specific to Contact
-        public IActionResult Contact() // match th cshtml file name in ViewsApp
+        public IActionResult Contact() // match the cshtml file name in ViewsApp
         {
-            ViewBag.Title = "Contact Us";
+            throw new InvalidOperationException("Bad things happen");
             return View();
         }
 
-        public IActionResult About() // match th cshtml file name in ViewsApp
+        public IActionResult About() // match the cshtml file name in ViewsApp
         {
             ViewBag.Title = "About Us";
             return View();
