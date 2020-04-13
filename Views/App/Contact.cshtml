@@ -3,7 +3,7 @@
     ViewBag.Title = "Contact Us";
 }
 <form method="post">
-    <div asp-validation-summary="All"></div>
+    <div asp-validation-summary="ModelOnly"></div>
     <label asp-for="Name" >Your Name:</label>
     <br />
     <input type="text" asp-for="Name" />
