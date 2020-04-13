@@ -19,7 +19,10 @@ namespace DutchTreat.Controllers
         [HttpGet("contact")] //specify a route that is specific to Contact
         public IActionResult Contact() // match the cshtml file name in ViewsApp
         {
+            ViewBag.Title = "Contact Us";
+
             throw new InvalidOperationException("Bad things happen");
+
             return View();
         }
 
