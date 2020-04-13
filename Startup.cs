@@ -22,8 +22,9 @@ namespace DutchTreat
                 app.UseDeveloperExceptionPage();
             }
             else
-            { 
+            {
                 // Add Error Page
+                app.UseExceptionHandler("/error");
             }
            
             //middlewares - the order is important!
