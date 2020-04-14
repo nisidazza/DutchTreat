@@ -8,7 +8,7 @@ namespace DutchTreat.Data.Entities
 {
     public class Product
     {
-        public int Id { get; set; }
+        public int Id { get; set; } //primary key to use in the DB
         public string Category { get; set; }
         public string Size { get; set; }
         public decimal Price { get; set; }
