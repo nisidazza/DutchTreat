@@ -28,6 +28,11 @@ namespace DutchTreat
             });
 
             services.AddTransient<DutchSeeder>();
+
+            //register DutchRepository with the appropriate service layer
+            // add IDutchRepository as a service and DutchRepository as implementation
+            services.AddScoped<IDutchRepository, DutchRepository>();
+
             //ENABLE RAZOR PAGES - 1/2
             services.AddRazorPages();
 
