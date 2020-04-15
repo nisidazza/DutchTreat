@@ -13,17 +13,20 @@ namespace DutchTreat.Controllers
     public class AppController : Controller
     {
         private readonly IMailService _mailService;
-        private readonly DutchContext _context;
+        private readonly IDutchRepository _repository;
+       
 
-        public AppController(IMailService mailService, DutchContext context)
+        //replace DutchContext with IDutchRepository
+        public AppController(IMailService mailService, IDutchRepository repository)
         {
             _mailService = mailService;
-            _context = context;
+            _repository = repository;
+            
         }
         //action
         public IActionResult Index() // match the cshtml file name in ViewsApp
         {
-            var results = _context.Products.ToList();
+            //var results = _context.Products.ToList();
             //Razor
             return View();
         }
@@ -57,10 +60,11 @@ namespace DutchTreat.Controllers
 
         public IActionResult Shop()
         {
+            var result = _repository.GetAllProducts();
             // this goes to the database, gets all products and returns them
-            var result = _context.Products
-                .OrderBy(p => p.Category)
-                .ToList();
+            //var result = _context.Products
+            //    .OrderBy(p => p.Category)
+            //    .ToList();
 
             /*another way using LINQ query:
              var result = from p in _context.Products
