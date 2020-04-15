@@ -22,7 +22,7 @@ namespace DutchTreat
 
         private static void SeedDb(IHost host)
         {
-            //DutchSeeder contains a scoped dependency injection so we need a scopeFactory
+            //DutchSeeder contains a scoped dependency injection - as created by AddDbContext - so we need a scopeFactory
             //the scopeFactory creates a scope for the lifetime of the request
             var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
 
