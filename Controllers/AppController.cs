@@ -69,7 +69,7 @@ namespace DutchTreat.Controllers
              */
 
             // it shows some products
-            return View();
+            return View(result);
         }
     }
 }
