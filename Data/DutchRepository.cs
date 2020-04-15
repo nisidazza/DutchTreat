@@ -32,5 +32,10 @@ namespace DutchTreat.Data
                     .Where(p => p.Category == category)
                     .ToList();
         }
+
+        public bool SaveAll()
+        {
+            return _ctx.SaveChanges() > 0;
+        }
     }
 }
