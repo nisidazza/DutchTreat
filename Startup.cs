@@ -26,6 +26,8 @@ namespace DutchTreat
             {
                 cfg.UseSqlServer(_config.GetConnectionString("DutchConnectionString"));
             });
+
+            services.AddTransient<DutchSeeder>();
             //ENABLE RAZOR PAGES - 1/2
             services.AddRazorPages();
 

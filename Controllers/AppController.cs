@@ -23,6 +23,7 @@ namespace DutchTreat.Controllers
         //action
         public IActionResult Index() // match the cshtml file name in ViewsApp
         {
+            var results = _context.Products.ToList();
             //Razor
             return View();
         }

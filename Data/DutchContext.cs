@@ -17,7 +17,7 @@ namespace DutchTreat.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
 
-        //this method specify how the mapping is going to happen between the entities and the database
+        //this method specifies how the mapping is going to happen between the entities and the database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
