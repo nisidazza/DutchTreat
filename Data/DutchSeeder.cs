@@ -1,5 +1,6 @@
 ﻿using DutchTreat.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace DutchTreat.Data
     public class DutchSeeder
     {
         private readonly DutchContext _ctx;
-        private readonly IHostingEnvironment _hosting;
+        private readonly IHostEnvironment _hosting;
 
         //save or read data from DutchContext
-        public DutchSeeder(DutchContext ctx, IHostingEnvironment hosting)
+        public DutchSeeder(DutchContext ctx, IHostEnvironment hosting)
         {
             _ctx = ctx;
             _hosting = hosting;
