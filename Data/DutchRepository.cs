@@ -20,6 +20,11 @@ namespace DutchTreat.Data
             _logger = logger;
         }
 
+        public IEnumerable<Order> GetAllOrders()
+        {
+            return _ctx.Orders.ToList();
+        }
+
         //get a list of all the products
         public IEnumerable<Product> GetAllProducts()
         {
