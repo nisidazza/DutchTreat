@@ -28,18 +28,24 @@ namespace DutchTreat.Data
             //makes sure that the db exists
             _ctx.Database.EnsureCreated();
 
+            IEnumerable<Product> products;
             if (!_ctx.Products.Any())
             {
                 //Need to create sample data
                 var filepath = Path.Combine(_hosting.ContentRootPath, "Data/art.json");
                 var json = File.ReadAllText(filepath);
-                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
+                products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
                 _ctx.Products.AddRange(products);
+            }
+            else
+            {
+                products = _ctx.Products;
+            }
 
-                var order = _ctx.Orders.Where(o => o.Id == 1).FirstOrDefault();
-                if (order != null)
-                {
-                    order.Items = new List<OrderItem>()
+            var order = _ctx.Orders.Where(o => o.Id == 1).FirstOrDefault();
+            if (order != null)
+            {
+                order.Items = new List<OrderItem>()
                     {
                         new OrderItem()
                         {
@@ -48,10 +54,9 @@ namespace DutchTreat.Data
                             UnitPrice = products.First().Price
                         }
                     };
-                }
-
-                _ctx.SaveChanges();
             }
+
+            _ctx.SaveChanges();
 
 
         }

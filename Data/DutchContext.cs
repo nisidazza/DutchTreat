@@ -1,14 +1,10 @@
 ﻿using DutchTreat.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DutchTreat.Data
 {
-    public class DutchContext: DbContext
+    public class DutchContext : DbContext
     {
         public DutchContext(DbContextOptions<DutchContext> options) : base(options)
         {
@@ -27,14 +23,25 @@ namespace DutchTreat.Data
             //    .Property(p => p.Title)
             //    .HasMaxLength(50);
 
+
+
             modelBuilder.Entity<Order>()
-                //add default or seeded data to our model - 
+                //add default or seeded data to our model -
                 .HasData(new Order() // EF Core 2.1 introduce HasData - good for a limit number of data
                 {
                     Id = 1,
                     OrderDate = DateTime.UtcNow,
                     OrderNumber = "12345"
                 });
+
+            modelBuilder.Entity<Product>()
+                    .Property(p => p.Price)
+                    .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<OrderItem>()
+                    .Property(p => p.UnitPrice)
+                    .HasColumnType("decimal(18,2)");
+
         }
     }
 }

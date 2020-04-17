@@ -44,7 +44,7 @@ namespace DutchTreat
             // Support for real mail service
 
             services.AddMvc()
-          .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+          .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

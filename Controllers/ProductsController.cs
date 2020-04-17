@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DutchTreat.Controllers
 {
@@ -27,7 +24,7 @@ namespace DutchTreat.Controllers
 
         [HttpGet]
         //Expected response type
-        [ProducesResponseType(200)] 
+        [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public ActionResult<IEnumerable<Product>> Get()
         {
@@ -36,12 +33,11 @@ namespace DutchTreat.Controllers
                 // Ok = 200 status code
                 return Ok(_repository.GetAllProducts());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError($"Failed to get products: {ex}");
                 return BadRequest("Failed to get products");
             }
-            
         }
     }
 }

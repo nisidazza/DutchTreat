@@ -3,8 +3,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DutchTreat.Data
 {
@@ -38,10 +36,9 @@ namespace DutchTreat.Data
             }
             catch (Exception ex)
             {
-                 _logger.LogError($"Failed to get all products: {ex}");
+                _logger.LogError($"Failed to get all products: {ex}");
                 return null;
             }
-
         }
 
         //get a list of products by category
