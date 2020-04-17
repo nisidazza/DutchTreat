@@ -9,8 +9,12 @@ namespace DutchTreat.Migrations
         {
             migrationBuilder.InsertData(
                 table: "Orders",
-                column: "OrderDate",
-                value: new DateTime(2020, 4, 17, 3, 48, 55, 382, DateTimeKind.Utc).AddTicks(3684));
+                columns: new[] { "OrderDate", "OrderNumber" },
+                values: new object[] {
+                    new DateTime(2020, 4, 17, 3, 48, 55, 382, DateTimeKind.Utc).AddTicks(3684),
+                    "12345"
+                }
+            );
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
