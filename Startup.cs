@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DutchTreat
 {
@@ -44,7 +45,9 @@ namespace DutchTreat
             // Support for real mail service
 
             services.AddMvc()
-          .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                 //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling =
+                ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
