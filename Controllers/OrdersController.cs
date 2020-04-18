@@ -44,7 +44,7 @@ namespace DutchTreat.Controllers
             {
                 var order = _repository.GetOrderById(id);
 
-                if (order != null) return Ok(_mapper.Map<Order, OrderViewModel>( order));
+                if (order != null) return Ok(_mapper.Map<Order, OrderViewModel>(order));
                 else return NotFound();
 
             }
@@ -64,43 +64,31 @@ namespace DutchTreat.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    //converting the model to the order
-                    var newOrder = new Order()
-                    {
-                        OrderDate = model.OrderDate,
-                        OrderNumber = model.OrderNumber,
-                        Id = model.OrderId
-                    };
+                    var newOrder = _mapper.Map<OrderViewModel, Order>(model);
 
                     if (newOrder.OrderDate == DateTime.MinValue)
                     {
                         newOrder.OrderDate = DateTime.Now;
                     }
 
-                _repository.AddEntity(newOrder);
-                if (_repository.SaveAll())
+                    _repository.AddEntity(newOrder);
+                    if (_repository.SaveAll())
+                    {
+                        //here we are using map in opposite direction
+                        return Created($"/api/orders/{newOrder.Id}", _mapper.Map<Order, OrderViewModel>(newOrder));
+                    }
+                }
+                else
                 {
-                        //convert the new order back to the view model
-                        var vm = new OrderViewModel()
-                        {
-                            OrderId = newOrder.Id,
-                            OrderDate = newOrder.OrderDate,
-                            OrderNumber = newOrder.OrderNumber
-                        };
-                    return Created($"/api/orders/{vm.OrderId}", vm);
+                    return BadRequest(ModelState);
                 }
             }
-                else
-            {
-                return BadRequest(ModelState);
-            }
-        }
             catch (Exception ex)
             {
                 _logger.LogError($"Failed to save a new order: {ex}");
             }
 
             return BadRequest("Failed to save new order.");
-}
+        }
     }
 }

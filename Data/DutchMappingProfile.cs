@@ -15,7 +15,8 @@ namespace DutchTreat.Data
         {
             //create a map between Order and OrderViewModel - try to match properties between them type to type
             CreateMap<Order, OrderViewModel>()
-            .ForMember(o => o.OrderId, ex => ex.MapFrom(o => o.Id));
+            .ForMember(o => o.OrderId, ex => ex.MapFrom(o => o.Id))
+            .ReverseMap();
         }     
     }
 }
