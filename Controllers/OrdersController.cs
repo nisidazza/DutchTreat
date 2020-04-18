@@ -59,6 +59,8 @@ namespace DutchTreat.Controllers
             {
                 if (ModelState.IsValid)
                 {
+
+                    //converting the model to the order
                     var newOrder = new Order()
                     {
                         OrderDate = model.OrderDate,
@@ -74,6 +76,7 @@ namespace DutchTreat.Controllers
                 _repository.AddEntity(newOrder);
                 if (_repository.SaveAll())
                 {
+                        //convert the new order back to the view model
                         var vm = new OrderViewModel()
                         {
                             OrderId = newOrder.Id,

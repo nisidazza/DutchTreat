@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using AutoMapper;
+using System;
+using System.Reflection;
 
 namespace DutchTreat
 {
@@ -31,6 +34,8 @@ namespace DutchTreat
 
             services.AddTransient<DutchSeeder>();
 
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             //register DutchRepository with the appropriate service layer
             // add IDutchRepository as a service and DutchRepository as implementation
             services.AddScoped<IDutchRepository, DutchRepository>();
@@ -50,6 +55,7 @@ namespace DutchTreat
                 ReferenceLoopHandling.Ignore);
         }
 
+       
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
