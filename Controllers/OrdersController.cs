@@ -43,7 +43,7 @@ namespace DutchTreat.Controllers
             {
                 var order = _repository.GetOrderById(id);
 
-                if (order != null) return Ok(order);
+                if (order != null) return Ok(_mapper.Map<Order, OrderViewModel>( order));
                 else return NotFound();
 
             }
