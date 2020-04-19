@@ -31,7 +31,26 @@ namespace DutchTreat.Data
             //makes sure that the db exists
             _ctx.Database.EnsureCreated();
 
+            //find user by email
             StoreUser user = await _userManager.FindByNameAsync("nisida@azzalini.com");
+
+            if (user == null)
+            {
+                user = new StoreUser()
+                {
+                    FirstName = "Nisi",
+                    LastName = "Azza",
+                    Email = "nisida@azzalini.com",
+                    UserName = "nisida@azzalini.com"
+                };
+
+                var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
+
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Could not create new user in seeder!");
+                }
+            }
 
             IEnumerable<Product> products;
             if (!_ctx.Products.Any())
@@ -50,6 +69,7 @@ namespace DutchTreat.Data
             var order = _ctx.Orders.Where(o => o.Id == 1).FirstOrDefault();
             if (order != null)
             {
+                order.User = user; //this update the order to be owned by the user
                 order.Items = new List<OrderItem>()
                     {
                         new OrderItem()
