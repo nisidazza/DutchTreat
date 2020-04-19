@@ -31,7 +31,7 @@ namespace DutchTreat
                 //change the seeder to get the service from inside the scope
                 //var seeder = host.Services.GetService<DutchSeeder>();
                 var seeder = scope.ServiceProvider.GetService<DutchSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait(); //wait until the seeding is done
             }
 
         }
