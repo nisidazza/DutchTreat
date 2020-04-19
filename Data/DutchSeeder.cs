@@ -1,5 +1,6 @@
 ﻿using DutchTreat.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
@@ -15,18 +16,22 @@ namespace DutchTreat.Data
     {
         private readonly DutchContext _ctx;
         private readonly IHostEnvironment _hosting;
+        private readonly UserManager<StoreUser> _userManager;
 
         //save or read data from DutchContext
-        public DutchSeeder(DutchContext ctx, IHostEnvironment hosting)
+        public DutchSeeder(DutchContext ctx, IHostEnvironment hosting, UserManager<StoreUser> userManager)
         {
             _ctx = ctx;
             _hosting = hosting;
+            _userManager = userManager;
         }
 
-        public void Seed()
+        public async Task SeedAsync()
         {
             //makes sure that the db exists
             _ctx.Database.EnsureCreated();
+
+            StoreUser user = await _userManager.FindByNameAsync("nisida@azzalini.com");
 
             IEnumerable<Product> products;
             if (!_ctx.Products.Any())
