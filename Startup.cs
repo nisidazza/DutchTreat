@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using AutoMapper;
 using System;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity;
+using DutchTreat.Data.Entities;
 
 namespace DutchTreat
 {
@@ -27,6 +29,13 @@ namespace DutchTreat
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //configure Identity
+            services.AddIdentity<StoreUser, IdentityRole>(cfg =>
+                        {
+                            cfg.User.RequireUniqueEmail = true;
+                        })
+                    .AddEntityFrameworkStores<DutchContext>();
+
             services.AddDbContext<DutchContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("DutchConnectionString"));
@@ -50,12 +59,12 @@ namespace DutchTreat
             // Support for real mail service
 
             services.AddMvc()
-                 //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling =
                 ReferenceLoopHandling.Ignore);
         }
 
-       
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -75,8 +84,13 @@ namespace DutchTreat
 
             app.UseNodeModules();
 
+            //the authentication has to be call before Routing and through before the endpoints
+            app.UseAuthentication();
+
             //this turns-on generic routing inside ASP.NET Core 3.1
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(cfg =>
             {
