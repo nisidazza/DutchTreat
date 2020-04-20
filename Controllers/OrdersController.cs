@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace DutchTreat.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrdersController : Controller
     {
         private readonly IDutchRepository _repository;
