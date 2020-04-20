@@ -1,29 +1,21 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var StoreCustomer = /** @class */ (function () {
+/*export*/ class StoreCustomer {
     //constructor
-    function StoreCustomer(firstName, lastName) {
+    constructor(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         //field
         this.visits = 0;
     }
     //function
-    StoreCustomer.prototype.showName = function () {
+    showName() {
         alert(this.firstName + " " + this.lastName);
-    };
-    Object.defineProperty(StoreCustomer.prototype, "name", {
-        get: function () {
-            return this.ourName;
-        },
-        //accessors - similar to properties
-        set: function (val) {
-            this.ourName = val;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return StoreCustomer;
-}());
-exports.StoreCustomer = StoreCustomer;
+    }
+    //accessors - similar to properties
+    set name(val) {
+        this.ourName = val;
+    }
+    get name() {
+        return this.ourName;
+    }
+}
 //# sourceMappingURL=storecustomer.js.map

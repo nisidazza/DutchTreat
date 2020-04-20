@@ -1,4 +1,4 @@
-﻿export class StoreCustomer {
+﻿/*export*/ class StoreCustomer {
 
     //constructor
     constructor(private firstName:string, private lastName:string) {
