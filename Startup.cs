@@ -36,6 +36,11 @@ namespace DutchTreat
                         })
                     .AddEntityFrameworkStores<DutchContext>();
 
+            //manage authentication
+            services.AddAuthentication()
+                .AddCookie()
+                .AddJwtBearer();
+
             services.AddDbContext<DutchContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("DutchConnectionString"));
