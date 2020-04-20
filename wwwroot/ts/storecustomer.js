@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var StoreCustomer = /** @class */ (function () {
     //constructor
     function StoreCustomer(firstName, lastName) {
@@ -23,4 +25,5 @@ var StoreCustomer = /** @class */ (function () {
     });
     return StoreCustomer;
 }());
+exports.StoreCustomer = StoreCustomer;
 //# sourceMappingURL=storecustomer.js.map
