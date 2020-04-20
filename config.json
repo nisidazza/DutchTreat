@@ -1,16 +1,16 @@
 {
-	"ConnectionStrings": {
-		"DutchConnectionString": "server=(localdb)\\ProjectsV13;Database=DutchTreatDb;Integrated Security=true;MultipleActiveResultSets=true"
-	},
-	"Logging": {
-		"LogLevel": {
-			"Default": "Information",
-			"Microsoft": "Warning"
-		}
-	},
-	"Tokens": {
-		"Key": "a;lkjasdf;lkajsd;flkjas ;dflkja sd",
-		"Issuer": "http://localhost:5000",
-		"Audience": "users"
-	}
+  "ConnectionStrings": {
+    "DutchConnectionString": "server=(localdb)\\ProjectsV13;Database=DutchTreatDb;Integrated Security=true;MultipleActiveResultSets=true"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
+  },
+  "Tokens": {
+    "Key": "a;lkjasdf;lkajsd;flkjas ;dflkja sd",
+    "Issuer": "http://localhost:5000",
+    "Audience": "users"
+  }
 }

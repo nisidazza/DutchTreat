@@ -21,8 +21,8 @@ namespace DutchTreat.Controllers
         private readonly UserManager<StoreUser> _userManager;
         private readonly IConfiguration _config;
 
-        public AccountController(ILogger<AccountController> logger, 
-            SignInManager<StoreUser> signInManager, 
+        public AccountController(ILogger<AccountController> logger,
+            SignInManager<StoreUser> signInManager,
             UserManager<StoreUser> userManager,
             IConfiguration config)
         {
@@ -111,7 +111,7 @@ namespace DutchTreat.Controllers
                             );
 
                         var results = new
-                        { 
+                        {
                             //create a new token
                             token = new JwtSecurityTokenHandler().WriteToken(token),
                             expiration = token.ValidTo

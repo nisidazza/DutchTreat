@@ -24,8 +24,6 @@ namespace DutchTreat.Data
             //    .Property(p => p.Title)
             //    .HasMaxLength(50);
 
-
-
             modelBuilder.Entity<Order>()
                 //add default or seeded data to our model -
                 .HasData(new Order() // EF Core 2.1 introduce HasData - good for a limit number of data
@@ -42,7 +40,6 @@ namespace DutchTreat.Data
             modelBuilder.Entity<OrderItem>()
                     .Property(p => p.UnitPrice)
                     .HasColumnType("decimal(18,2)");
-
         }
     }
 }

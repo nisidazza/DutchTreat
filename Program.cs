@@ -1,9 +1,8 @@
+using DutchTreat.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using DutchTreat.Data;
+using Microsoft.Extensions.Hosting;
 
 namespace DutchTreat
 {
@@ -33,7 +32,6 @@ namespace DutchTreat
                 var seeder = scope.ServiceProvider.GetService<DutchSeeder>();
                 seeder.SeedAsync().Wait(); //wait until the seeding is done
             }
-
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -47,7 +45,7 @@ namespace DutchTreat
 
         private static void SetupConfiguration(HostBuilderContext ctx, IConfigurationBuilder builder)
         {
-            //Removing the default configuration options 
+            //Removing the default configuration options
             builder.Sources.Clear();
             //configuration may exist in different format - the order matters!!!
             builder.AddJsonFile("config.json", false, true)

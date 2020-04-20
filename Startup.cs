@@ -38,8 +38,9 @@ namespace DutchTreat
 
             //manage authentication
             services.AddAuthentication()
-                .AddCookie()
-                .AddJwtBearer(cfg => {
+                .AddCookie() // via Cookies
+                .AddJwtBearer(cfg =>
+                { //via Jwt
                     //add token validation parameters
                     cfg.TokenValidationParameters = new TokenValidationParameters()
                     {
