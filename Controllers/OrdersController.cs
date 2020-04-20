@@ -2,12 +2,12 @@
 using DutchTreat.Data;
 using DutchTreat.Data.Entities;
 using DutchTreat.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace DutchTreat.Controllers
 {
@@ -50,7 +50,6 @@ namespace DutchTreat.Controllers
 
                 if (order != null) return Ok(_mapper.Map<Order, OrderViewModel>(order));
                 else return NotFound();
-
             }
             catch (Exception ex)
             {
@@ -67,7 +66,6 @@ namespace DutchTreat.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
                     var newOrder = _mapper.Map<OrderViewModel, Order>(model);
 
                     if (newOrder.OrderDate == DateTime.MinValue)

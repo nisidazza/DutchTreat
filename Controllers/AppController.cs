@@ -3,11 +3,6 @@ using DutchTreat.Services;
 using DutchTreat.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DutchTreat.Controllers
 {
@@ -15,15 +10,14 @@ namespace DutchTreat.Controllers
     {
         private readonly IMailService _mailService;
         private readonly IDutchRepository _repository;
-       
 
         //replace DutchContext with IDutchRepository
         public AppController(IMailService mailService, IDutchRepository repository)
         {
             _mailService = mailService;
             _repository = repository;
-            
         }
+
         //action
         public IActionResult Index() // match the cshtml file name in ViewsApp
         {
@@ -49,7 +43,7 @@ namespace DutchTreat.Controllers
                 ViewBag.UserMessage = "Mail Sent";
                 ModelState.Clear();
             }
-            
+
             return View();
         }
 

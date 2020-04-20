@@ -1,5 +1,4 @@
 ﻿using DutchTreat.Data.Entities;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -7,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DutchTreat.Data
@@ -82,9 +80,6 @@ namespace DutchTreat.Data
             }
 
             _ctx.SaveChanges();
-
-
         }
-
     }
 }
