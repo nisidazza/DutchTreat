@@ -31,20 +31,20 @@ namespace DutchTreat.Data
             //makes sure that the db exists
             _ctx.Database.EnsureCreated();
 
-            //find user by email
-            StoreUser user = await _userManager.FindByNameAsync("nisida@azzalini.com");
+            //Seed the Main user - find by email
+            StoreUser user = await _userManager.FindByNameAsync("ross@smith.com");
 
             if (user == null)
             {
                 user = new StoreUser()
                 {
-                    FirstName = "Nisi",
-                    LastName = "Azza",
-                    Email = "nisida@azzalini.com",
-                    UserName = "nisida@azzalini.com"
+                    FirstName = "Ross",
+                    LastName = "Smith",
+                    Email = "ross@smith.com",
+                    UserName = "ross@smith.com"
                 };
 
-                var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
+                var result = await _userManager.CreateAsync(user, "P4s$w0rd");
 
                 if (result != IdentityResult.Success)
                 {

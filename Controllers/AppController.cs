@@ -45,7 +45,7 @@ namespace DutchTreat.Controllers
             if (ModelState.IsValid)
             {
                 //Send the email via Service
-                _mailService.SendMessage("nisida@azzalini.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
+                _mailService.SendMessage("ross@smith.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
                 ViewBag.UserMessage = "Mail Sent";
                 ModelState.Clear();
             }
