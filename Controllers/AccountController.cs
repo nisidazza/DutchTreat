@@ -43,11 +43,11 @@ namespace DutchTreat.Controllers
                     //ReturnUrl is the query string value
                     if (Request.Query.Keys.Contains("ReturnUrl"))
                     {
-                        Redirect(Request.Query["ReturnUrl"].First());// get the first value of the query string
+                        return Redirect(Request.Query["ReturnUrl"].First());// get the first value of the query string
                     }
                     else
                     {
-                        RedirectToAction("Shop", "App");
+                        return RedirectToAction("Shop", "App");
                     }
                 }
             }
