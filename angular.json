@@ -34,24 +34,24 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "ClientApp",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dutch-app",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "outputPath": "wwwroot/clientapp",
+            "index": "ClientApp/index.html",
+            "main": "ClientApp/main.ts",
+            "polyfills": "ClientApp/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "ClientApp/favicon.ico",
+              "ClientApp/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "ClientApp/styles.css"
             ],
             "scripts": []
           },
@@ -59,8 +59,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "ClientApp/environments/environment.ts",
+                  "with": "ClientApp/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -106,16 +106,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "main": "ClientApp/test.ts",
+            "polyfills": "ClientApp/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "ClientApp/favicon.ico",
+              "ClientApp/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "ClientApp/styles.css"
             ],
             "scripts": []
           }
