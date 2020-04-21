@@ -322,7 +322,7 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!************************************!*\
   !*** multi ./ClientApp/styles.css ***!
   \************************************/
@@ -334,5 +334,5 @@ module.exports = __webpack_require__(/*! C:\dev\C#\ASP.NETCore-WebApp\Examples\D
 
 /***/ })
 
-},[[3,"runtime"]]]);
-//# sourceMappingURL=styles-es2015.js.map
+},[[2,"runtime"]]]);
+//# sourceMappingURL=styles.js.map
