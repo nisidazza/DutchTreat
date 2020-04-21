@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { DataService } from '../shared/dataService';
+import { Product } from '../shared/product';
 
 @Component({
     selector: "product-list",
@@ -12,8 +13,8 @@ export class ProductList implements OnInit {
     constructor(private data: DataService) {
     }
 
-    //getting data from the service
-    public products = [];
+    //add type safety to the products list
+    public products : Product[] = [];
 
      // Called after the constructor and called  after the first ngOnChanges() 
     ngOnInit(): void {
