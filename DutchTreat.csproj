@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\app\shared\dataService.ts" />
     <TypeScriptCompile Remove="ClientApp\app\shop\productList.component.ts" />
     <TypeScriptCompile Remove="wwwroot\ts\main.ts" />
   </ItemGroup>
