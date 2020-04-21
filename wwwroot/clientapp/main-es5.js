@@ -180,6 +180,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _shop_productList_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./shop/productList.component */
     "./ClientApp/app/shop/productList.component.ts");
+    /* harmony import */
+
+
+    var _shared_dataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./shared/dataService */
+    "./ClientApp/app/shared/dataService.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -193,7 +199,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       factory: function AppModule_Factory(t) {
         return new (t || AppModule)();
       },
-      providers: [],
+      providers: [_shared_dataService__WEBPACK_IMPORTED_MODULE_4__["DataService"]],
       imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]]]
     });
 
@@ -212,11 +218,49 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: [{
           declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _shop_productList_component__WEBPACK_IMPORTED_MODULE_3__["ProductList"]],
           imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]],
-          providers: [],
+          providers: [_shared_dataService__WEBPACK_IMPORTED_MODULE_4__["DataService"]],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         }]
       }], null, null);
     })();
+    /***/
+
+  },
+
+  /***/
+  "./ClientApp/app/shared/dataService.ts":
+  /*!*********************************************!*\
+    !*** ./ClientApp/app/shared/dataService.ts ***!
+    \*********************************************/
+
+  /*! exports provided: DataService */
+
+  /***/
+  function ClientAppAppSharedDataServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DataService", function () {
+      return DataService;
+    });
+
+    var DataService = function DataService() {
+      _classCallCheck(this, DataService);
+
+      this.products = [{
+        title: "First Product",
+        price: 19.99
+      }, {
+        title: "Second Product",
+        price: 9.99
+      }, {
+        title: "Third Product",
+        price: 14.99
+      }];
+    };
     /***/
 
   },
@@ -249,7 +293,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var _shared_dataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ../shared/dataService */
+    "./ClientApp/app/shared/dataService.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
@@ -273,23 +323,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    var ProductList = function ProductList() {
+    var ProductList =
+    /** inject DataService **/
+    function ProductList(data) {
       _classCallCheck(this, ProductList);
 
-      this.products = [{
-        title: "First Product",
-        price: 19.99
-      }, {
-        title: "Second Product",
-        price: 9.99
-      }, {
-        title: "Third Product",
-        price: 14.99
-      }];
+      this.data = data; //getting data from the service
+
+      this.products = [];
+      this.products = data.products;
     };
 
     ProductList.ɵfac = function ProductList_Factory(t) {
-      return new (t || ProductList)();
+      return new (t || ProductList)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]));
     };
 
     ProductList.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -317,8 +363,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.products);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgForOf"]],
-      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CurrencyPipe"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]],
+      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CurrencyPipe"]],
       encapsulation: 2
     });
     /*@__PURE__*/
@@ -331,7 +377,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           templateUrl: "productList.component.html",
           styleUrls: []
         }]
-      }], null, null);
+      }], function () {
+        return [{
+          type: _shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]
+        }];
+      }, null);
     })();
     /***/
 
