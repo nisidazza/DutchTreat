@@ -56,7 +56,6 @@ namespace DutchTreat.Controllers
         [Authorize] //user need to be logged-in or have some credentials
         public IActionResult Shop()
         {
-            var result = _repository.GetAllProducts();
             // this goes to the database, gets all products and returns them
             //var result = _context.Products
             //    .OrderBy(p => p.Category)
@@ -70,7 +69,7 @@ namespace DutchTreat.Controllers
              */
 
             // it shows some products
-            return View(result);
+            return View();
         }
     }
 }
