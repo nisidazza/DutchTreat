@@ -10,7 +10,7 @@ export class DataService {
 
     constructor(private http: HttpClient) { }
 
-    public order: Order;
+    public order: Order = new Order();
 
     public products: Product[] = [];
 
@@ -28,10 +28,6 @@ export class DataService {
     }
 
     public addToOrder(newProduct: Product) {
-
-        if (this.order) {
-            this.order = new Order();
-        }
 
         var item: OrderItem = new OrderItem();
 
