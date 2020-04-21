@@ -2,13 +2,14 @@
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
+import { Product } from './product';
 
 @Injectable()
 export class DataService {
 
     constructor(private http: HttpClient) { }
 
-    public products = [];
+    public products: Product[] = [];
 
     //call the API 
     //Observable specify what return type loadProducts is
