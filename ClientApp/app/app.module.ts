@@ -12,6 +12,7 @@ import { Login } from './login/login.component';
 import { DataService } from './shared/dataService';
 
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 //collection of routes
 let routes = [
@@ -41,7 +42,8 @@ let routes = [
             //options for configuring routing
             useHash: true,
             enableTracing: false, // for Debugging of the Routes
-        })
+        }),
+        FormsModule
     ],
     providers: [
         DataService

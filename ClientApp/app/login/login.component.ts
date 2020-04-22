@@ -16,11 +16,13 @@ export class Login {
     public creds = {
         //untyped properties
         username: "",
-        paswword: ""
+        password: ""
     }
 
     onLogin() {
-      //Call the login Service
+        //Call the login Service
+        alert(this.creds.username);
+        this.creds.username += "!";
     }
 
 }
