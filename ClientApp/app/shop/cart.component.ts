@@ -4,7 +4,7 @@ import { DataService } from '../shared/dataService';
 @Component({
     selector: "the-cart",
     templateUrl: "cart.component.html",
-    styleUrls: []
+    styleUrls: ["cart.component.css"]
 })
 
 export class Cart {

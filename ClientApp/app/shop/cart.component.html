@@ -1,13 +1,13 @@
 ﻿<h3>Shopping Cart</h3>
-<div>#/Items: {{data.order.items.length}}</div>
-<div>Subtotal: {{data.order.subtotal | currency: "NZD":true}}</div>
-<table class="table table-sm table-hover" >
+<div class="items-total"><strong>#/Items</strong>: {{data.order.items.length}}</div>
+<div class="subtotal"><strong>Subtotal</strong>: {{data.order.subtotal | currency: "NZD":true}}</div>
+<table class="table table-sm table-hover">
     <thead>
         <tr>
-            <td>Product</td>
-            <td>#</td>
-            <td>$</td>
-            <td>Total</td>
+            <td><strong>Product</strong></td>
+            <td><strong>#</strong></td>
+            <td><strong>$</strong></td>
+            <td><strong>Total</strong></td>
         </tr>
     </thead>
     <tbody>
