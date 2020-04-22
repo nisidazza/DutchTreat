@@ -16,7 +16,9 @@ let routes = [
     //root of client-side project
     { path: "", component: Shop },
     //client checkout page
-    { path: "checkout", component: Checkout }
+    { path: "checkout", component: Checkout },
+
+    {path: "login", component: Login}
 ];
 
 
