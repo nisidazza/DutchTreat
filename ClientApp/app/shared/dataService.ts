@@ -29,17 +29,25 @@ export class DataService {
 
     public addToOrder(newProduct: Product) {
 
-        var item: OrderItem = new OrderItem();
+        let item: OrderItem = this.order.items.find(i => i.productId == newProduct.id);
 
-        item.productId = newProduct.id;
-        item.productArtist = newProduct.artist;
-        item.productArtId = newProduct.artId;
-        item.productCategory = newProduct.category;
-        item.productSize = newProduct.size;
-        item.productTitle = newProduct.title;
-        item.unitPrice = newProduct.price;
-        item.quantity = 1;
+        if (item) {
 
-        this.order.items.push(item);
+            item.quantity++
+
+        } else {
+
+            item = new OrderItem();
+            item.productId = newProduct.id;
+            item.productArtist = newProduct.artist;
+            item.productArtId = newProduct.artId;
+            item.productCategory = newProduct.category;
+            item.productSize = newProduct.size;
+            item.productTitle = newProduct.title;
+            item.unitPrice = newProduct.price;
+            item.quantity = 1;
+
+            this.order.items.push(item);
+        }
     }
 }
