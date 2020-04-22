@@ -11,6 +11,14 @@
 }
 
 div.product-info {
-    font-size: 15px;
+    font-size: 17px;
     float: right;
+    border: dotted 1px black;
+    background-color: aliceblue;
+    padding: 2px;
+}
+
+ul.product-props {
+    list-style:none;
+    padding-left: 1px;
 }
