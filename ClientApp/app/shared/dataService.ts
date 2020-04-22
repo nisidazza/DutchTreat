@@ -38,7 +38,7 @@ export class DataService {
     }
 
     //login method
-    login(creds): Observable<boolean> {
+    public login(creds): Observable<boolean> {
         //we send creds as body
         return this.http
             .post("/account/createtoken", creds)
@@ -50,6 +50,17 @@ export class DataService {
                     return true;
                 })
             )
+    }
+
+    public checkout() {
+        return this.http
+            .post("/api/orders", this.order)
+            .pipe(
+                map(response => {
+                    this.order = new Order();
+                    return true;
+                })
+            );
     }
 
     public addToOrder(newProduct: Product) {
