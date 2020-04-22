@@ -53,7 +53,7 @@ namespace DutchTreat.Controllers
             return View();
         }
 
-        [Authorize] //user need to be logged-in or have some credentials
+        
         public IActionResult Shop()
         {
             // this goes to the database, gets all products and returns them
