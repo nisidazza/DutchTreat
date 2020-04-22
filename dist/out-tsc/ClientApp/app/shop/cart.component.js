@@ -9,7 +9,7 @@ Cart = __decorate([
     Component({
         selector: "the-cart",
         templateUrl: "cart.component.html",
-        styleUrls: []
+        styleUrls: ["cart.component.css"]
     })
 ], Cart);
 export { Cart };

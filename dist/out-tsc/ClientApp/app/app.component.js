@@ -9,7 +9,7 @@ AppComponent = __decorate([
     Component({
         selector: 'the-shop',
         templateUrl: "./app.component.html",
-        styles: []
+        styleUrls: ["app.component.css"]
     })
 ], AppComponent);
 export { AppComponent };
