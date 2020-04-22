@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ProductList } from './shop/productList.component';
 import { Cart } from './shop/cart.component';
+import { Shop } from './shop/shop.component';
+import { Checkout } from './checkout/checkout.component';
 import { DataService } from './shared/dataService';
 
 import { RouterModule } from '@angular/router';
@@ -22,7 +24,9 @@ let routes = [
     declarations: [
         AppComponent,
         ProductList,
-        Cart
+        Cart,
+        Shop,
+        Checkout
     ],
     imports: [
         BrowserModule,
