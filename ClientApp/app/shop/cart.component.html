@@ -1,6 +1,6 @@
 ﻿<h3>Shopping Cart</h3>
 <div>#/Items: {{data.order.items.length}}</div>
-<div>Subtotal: {{data.order.subtotal}}</div>
+<div>Subtotal: {{data.order.subtotal | currency: "NZD":true}}</div>
 <table class="table table-sm table-hover" >
     <thead>
         <tr>
