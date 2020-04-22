@@ -8,7 +8,7 @@ export class Order {
 
     //read-only property
     get subtotal(): number {
-        return 0;
+        return _.sum(_.map(this.items, i => i.unitPrice * i.quantity));
     };
 } 
 
