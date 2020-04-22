@@ -4,6 +4,7 @@ let Login = class Login {
     constructor(data, router) {
         this.data = data;
         this.router = router;
+        this.errorMessage = "";
         //object that represents the data on the form
         this.creds = {
             //untyped properties
@@ -13,8 +14,17 @@ let Login = class Login {
     }
     onLogin() {
         //Call the login Service
-        alert(this.creds.username);
-        this.creds.username += "!";
+        this.data.login(this.creds)
+            .subscribe(success => {
+            if (success) {
+                if (this.data.order.items.length == 0) {
+                    this.router.navigate([""]);
+                }
+                else {
+                    this.router.navigate(["checkout"]);
+                }
+            }
+        }, err => this.errorMessage = "Failed to login");
     }
 };
 Login = __decorate([
