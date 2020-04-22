@@ -7,6 +7,17 @@ import { ProductList } from './shop/productList.component';
 import { Cart } from './shop/cart.component';
 import { DataService } from './shared/dataService';
 
+import { RouterModule } from '@angular/router';
+
+//collection of routes
+let routes = [
+    //root of client-side project
+    { path: "", component: Shop },
+    //client checkout page
+    { path: "/checkout", component: Checkout }
+];
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -15,7 +26,13 @@ import { DataService } from './shared/dataService';
     ],
     imports: [
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        //inject routes into the module in order to use routing
+        RouterModule.forRoot(routes, {
+            //options for configuring routing
+            useHash: true,
+            enableTracing: false, // for Debugging of the Routes
+        })
     ],
     providers: [
         DataService
