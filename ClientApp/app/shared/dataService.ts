@@ -21,7 +21,8 @@ export class DataService {
     //call the API 
     //Observable specify what return type loadProducts is
     loadProducts(): Observable<boolean> {
-        return this.http.get("/api/products")
+        return this.http
+            .get("/api/products")
             //inside the pipe there will be a list of interceptors
             .pipe(
                 map((data: any[]) => {
@@ -34,6 +35,21 @@ export class DataService {
     //read-only property
     public get loginRequired(): boolean {
         return this.token.length == 0 || this.tokenExpiration > new Date();
+    }
+
+    //login method
+    login(creds): Observable<boolean> {
+        //we send creds as body
+        return this.http
+            .post("/account/createtoken", creds)
+            .pipe(
+                //data that are coming back
+                map((data: any) => {
+                    this.token = data.token;
+                    this.tokenExpiration = data.expiration;
+                    return true;
+                })
+            )
     }
 
     public addToOrder(newProduct: Product) {
