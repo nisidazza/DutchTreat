@@ -24,6 +24,17 @@ namespace DutchTreat.Data
             _ctx.Add(model);
         }
 
+        //Convert new products to lookup of product
+        public void AddOrder(Order newOrder)
+        {
+            foreach (var item in newOrder.Items)
+            {
+                item.Product = _ctx.Products.Find(item.Product.Id);
+            }
+
+            AddEntity(newOrder);
+        }
+
         public IEnumerable<Order> GetAllOrders(bool includeItems)
         {
             if (includeItems)

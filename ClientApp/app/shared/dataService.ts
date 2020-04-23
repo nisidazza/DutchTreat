@@ -12,7 +12,7 @@ export class DataService {
 
     //Support Login
     private token: string = "";
-    private tokenExpiration: Date;
+    private tokenExpiration: Date = new Date();
 
     public order: Order = new Order();
 
@@ -44,9 +44,10 @@ export class DataService {
             .post("/account/createtoken", creds)
             .pipe(
                 //data that are coming back
-                map((data: any) => {
-                    this.token = data.token;
-                    this.tokenExpiration = data.expiration;
+                map((response: any) => {
+                    let tokenInfo = response;
+                    this.token = tokenInfo.token;
+                    this.tokenExpiration = tokenInfo.expiration;
                     return true;
                 })
             )
