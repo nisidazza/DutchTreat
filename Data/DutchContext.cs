@@ -11,6 +11,7 @@ namespace DutchTreat.Data
         {
         }
 
+        //collection of entities in the context
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
 
