@@ -31,7 +31,11 @@ namespace DutchTreat.Controllers
         public IActionResult Get(int orderId) // orderId match the parameter in the api url
         {
             var order = _repository.GetOrderById(User.Identity.Name, orderId);
-            if (order != null) return Ok(_mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemViewModel>>(order.Items));
+            if (order != null) {
+                var mapperResult = _mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemViewModel>>(order.Items);
+                return Ok(mapperResult);
+            }
+            
             return NotFound();
         }
 
