@@ -14,11 +14,17 @@
 		<TypeScriptCompile Remove="ClientApp\app\shop\productList.component.ts" />
 		<TypeScriptCompile Remove="ClientApp\app\shop\shop.component.ts" />
 		<TypeScriptCompile Remove="wwwroot\ts\main.ts" />
+	  <Compile Remove="DutchTreatXUnitTests\**" />
+	  <Content Remove="DutchTreatXUnitTests\**" />
+	  <EmbeddedResource Remove="DutchTreatXUnitTests\**" />
+	  <None Remove="DutchTreatXUnitTests\**" />
+	  <TypeScriptCompile Remove="DutchTreatXUnitTests\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="wwwroot\css\" />
 		<Folder Include="wwwroot\img\" />
+		<Folder Include="wwwroot\js\" />
 		<Folder Include="wwwroot\lib\" />
 	</ItemGroup>
 
