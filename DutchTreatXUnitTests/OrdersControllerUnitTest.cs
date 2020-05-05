@@ -2,9 +2,11 @@
 using DutchTreat.Controllers;
 using DutchTreat.Data;
 using DutchTreat.Data.Entities;
+using DutchTreat.Services;
 using DutchTreat.ViewModels;
 using DutchTreatXUnitTests.FakeContext;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
@@ -21,7 +23,7 @@ namespace DutchTreatXUnitTests
         private readonly OrdersController _sut;
         private readonly List<Order> _orders;
         private readonly Mock<IDutchRepository> _mockRepo;
-        private readonly Mock<ILogger<OrdersController>> _mockLogger;
+        private readonly Mock<IMyLogger<OrdersController>> _mockLogger;
         private readonly Mock<IMapper> _mockMapper;
         private readonly Mock<IUserRepository> _mockUserRepo;
         private readonly List<OrderViewModel> _orderViewModel;
@@ -29,18 +31,17 @@ namespace DutchTreatXUnitTests
 
         public OrdersControllerUnitTest()
         {
-            _mockLogger = new Mock<ILogger<OrdersController>>();
+            _mockLogger = new Mock<IMyLogger<OrdersController>>();
             _mockUserRepo = new Mock<IUserRepository>();
 
             _orders = new List<Order>();
             _orders.Add(new Order
             {
                 Id = 1,
-                OrderDate = DateTime.Now,
+                OrderDate = new DateTime(2020, 1, 1),
                 OrderNumber = "abc123",
                 Items = new List<OrderItem>()
             });
-
 
             _mockRepo = new Mock<IDutchRepository>();
             _mockRepo.Setup(r => r.GetOrderById(It.IsAny<string>(), It.IsAny<int>()))
@@ -50,7 +51,7 @@ namespace DutchTreatXUnitTests
             _orderViewModel.Add(new OrderViewModel
             {
                 OrderId = 1,
-                OrderDate = DateTime.Now,
+                OrderDate = new DateTime(2020, 1, 1),
                 OrderNumber = "abc123"
             });
 
@@ -72,7 +73,53 @@ namespace DutchTreatXUnitTests
         [Fact]
         public void GetOrder_OrderDoesExist_ReturnOk()
         {
-            _sut.Get(1);
+            var orderId = 1;
+            var result = _sut.Get(orderId);
+            Assert.Equal(typeof(OkObjectResult), result.GetType());
+        }
+
+        [Fact]
+        public void GetOrder_OrderDoesExist_MapperHasBeenCalledOnce()
+        {
+            var orderId = 1;
+            var result = _sut.Get(orderId);
+            _mockMapper.Verify(m => m.Map<Order, OrderViewModel>(_orders[0]),
+            Times.Once()
+            );
+        }
+
+        [Fact]
+        public void GetOrder_OrderDoesNotExist_ReturnNotFound()
+        {
+            var orderId = -1;
+            var result = _sut.Get(orderId);
+            Assert.Equal(typeof(NotFoundResult), result.GetType());
+        }
+
+        [Fact]
+        public void GetOrder_RepositoryThrowsException_LogErrorIsCalled()
+        {
+            //simulate DB is not responding
+            _mockRepo.Setup(r => r.GetOrderById(It.IsAny<string>(), It.IsAny<int>()))
+                .Throws<Exception>();
+
+            var result = _sut.Get(1);
+
+            _mockLogger.Verify(x =>
+                x.LogError(It.IsAny<string>()),
+                Times.Once()
+            );
+        }
+
+        [Fact]
+        public void GetOrder_RepositoryThrowsException_ReturnBadRequest()
+        {
+            //simulate DB is not responding
+            _mockRepo.Setup(r => r.GetOrderById(It.IsAny<string>(), It.IsAny<int>()))
+                .Throws<Exception>();
+
+            var result = _sut.Get(1);
+
         }
     }
 }
