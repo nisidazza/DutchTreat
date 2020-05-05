@@ -20,17 +20,17 @@ namespace DutchTreat.Controllers
         private readonly IDutchRepository _repository;
         private readonly ILogger<OrdersController> _logger;
         private readonly IMapper _mapper;
-        private readonly UserManager<StoreUser> _userManager;
+        private readonly IUserRepository _userRepository;
 
         public OrdersController(IDutchRepository repository, 
             ILogger<OrdersController> logger, 
             IMapper mapper, 
-            UserManager<StoreUser> userManager)
+            IUserRepository userRepository)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
-            _userManager = userManager;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
@@ -83,7 +83,7 @@ namespace DutchTreat.Controllers
                         newOrder.OrderDate = DateTime.Now;
                     }
 
-                    var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                    var currentUser = await _userRepository.GetUserByName(User.Identity.Name);
                     newOrder.User = currentUser;
 
                     _repository.AddOrder(newOrder);

@@ -63,6 +63,8 @@ namespace DutchTreat
             // add IDutchRepository as a service and DutchRepository as implementation
             services.AddScoped<IDutchRepository, DutchRepository>();
 
+            services.AddScoped<IUserRepository, UserRepository>();
+
             //ENABLE RAZOR PAGES - 1/2
             services.AddRazorPages();
 
