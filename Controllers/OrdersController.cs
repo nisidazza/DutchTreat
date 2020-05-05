@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using DutchTreat.Data;
 using DutchTreat.Data.Entities;
+using DutchTreat.Services;
 using DutchTreat.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,12 +17,12 @@ namespace DutchTreat.Controllers
     public class OrdersController : Controller
     {
         private readonly IDutchRepository _repository;
-        private readonly ILogger<OrdersController> _logger;
+        private readonly IMyLogger<OrdersController> _logger;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
 
-        public OrdersController(IDutchRepository repository, 
-            ILogger<OrdersController> logger, 
+        public OrdersController(IDutchRepository repository,
+            IMyLogger<OrdersController> logger, 
             IMapper mapper, 
             IUserRepository userRepository)
         {
