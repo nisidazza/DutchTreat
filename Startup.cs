@@ -65,6 +65,8 @@ namespace DutchTreat
 
             services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddTransient(typeof(IMyLogger<>), typeof(MyLogger<>));
+
             //ENABLE RAZOR PAGES - 1/2
             services.AddRazorPages();
 
